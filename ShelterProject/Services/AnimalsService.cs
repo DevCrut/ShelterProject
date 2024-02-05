@@ -1,44 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ShelterProject.Models;
+﻿using ShelterProject.Models;
+using ShelterProject.Services.Generics;
+using ShelterProject.Services.Interfaces;
 
 namespace ShelterProject.Services
 {
-    public class AnimalsService
+    public class AnimalsService : BaseEntityService, IAnimalsService
     {
+        public AnimalsService(UnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+
+        public async Task Create(Animal entity)
+        {
+            await unitOfWork.AnimalsRepository.Create(entity);
+        }
+        public async Task Delete(Animal entity)
+        {
+            await unitOfWork.AnimalsRepository.Delete(entity);
+        }
+        public async Task Update(Animal entity)
+        {
+            await unitOfWork.AnimalsRepository.Update(entity);
+        }
         public async Task<List<(Guid ShelterId, int AnimalsCount)>> GetAnimalsCountByShelters()
         {
-            var result = await _context.Animals
-                .GroupBy(animal => animal.ShelterId)
-                .Select(group => new
-                {
-                    ShelterId = group.Key,
-                    AnimalsCount = group.Count()
-                })
-                .ToListAsync();
-
-            return result.Select(r => (r.ShelterId, r.AnimalsCount)).ToList();
+            return await unitOfWork.AnimalsRepository.GetAnimalsCountByShelters();
         }
 
         public async Task<List<(Guid ShelterId, int AnimalsCount)>> GetAnimalsCountByShelters(int minValue)
         {
-            var result = await _context.Animals
-                .GroupBy(animal => animal.ShelterId)
-                .Select(group => new
-                {
-                    ShelterId = group.Key,
-                    AnimalsCount = group.Count()
-                }).Where(group => group.AnimalsCount >= minValue)
-                .ToListAsync();
-
-            return result.Select(r => (r.ShelterId, r.AnimalsCount)).ToList();
+            return await unitOfWork.AnimalsRepository.GetAnimalsCountByShelters(minValue);
         }
 
         public async Task<List<Animal>> GetAnimalsWithMedicalWriteoffs()
         {
-            var result = await _context.Animals
-            .Include(animal => animal.MedicalWriteoff)
-            .ToListAsync();
-            return result;
+            return await unitOfWork.AnimalsRepository.GetAnimalsWithMedicalWriteoffs();
         }
     }
 }

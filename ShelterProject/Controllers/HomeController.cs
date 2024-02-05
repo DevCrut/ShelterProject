@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShelterProject.Models;
+using ShelterProject.Services;
 using System.Diagnostics;
 
 namespace ShelterProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUnitOfWork _unitOfWork)
         {
-            _logger = logger;
+            unitOfWork = _unitOfWork;
         }
 
         public IActionResult Index()
