@@ -1,4 +1,5 @@
 ﻿using ShelterProject.Models.Generics;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShelterProject.Models
 {
@@ -7,9 +8,11 @@ namespace ShelterProject.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Breed {  get; set; }
-        public int ShelterId { get; set; }
-        public virtual Shelter Shelter { get; set; }
         public DateTime BirthDate { get; set; }
 
+        public virtual Shelter Shelter { get; set; }
+
+        public Guid MedicalWriteoffId { get; set; }
+        public virtual MedicalWriteoff MedicalWriteoff { get; set; }
     }
 }
