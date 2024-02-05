@@ -5,7 +5,7 @@ using ShelterProject.Repositories.Generics;
 
 namespace ShelterProject.Repositories
 {
-    public class ShelterRepo : GenericRepo<ApplicationUser>
+    public class ShelterRepo : GenericRepo<Shelter>
     {
         public ShelterRepo(ApplicationDbContext context) : base(context) { }
 
@@ -68,5 +68,6 @@ namespace ShelterProject.Repositories
 
             return 0;
         }
+
     }
 }

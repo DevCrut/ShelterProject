@@ -10,6 +10,7 @@ namespace ShelterProject.Models
         public string Breed {  get; set; }
         public DateTime BirthDate { get; set; }
 
+        public Guid ShelterId { get; set; }
         public virtual Shelter Shelter { get; set; }
 
         public Guid MedicalWriteoffId { get; set; }

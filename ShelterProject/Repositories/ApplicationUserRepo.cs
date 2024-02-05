@@ -11,7 +11,7 @@ namespace ShelterProject.Repositories
 
         public async Task<ApplicationUser?> GetById(string id) // Runtime Overwrite because Identity implements IDs as strings
         {
-            return await _context.Set<ApplicationUser>().FindAsync(id);
+            return await _context.ApplicationUsers.FindAsync(id);
         }
 
         public async Task<ApplicationUser?> GetUserByEmail(string email)
