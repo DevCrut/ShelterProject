@@ -5,7 +5,7 @@ namespace ShelterProject.Repositories.Generics
     public interface IGenericRepo<TEntity> where TEntity : class
     {
         Task<List<TEntity>> GetAll();
-        Task<TEntity?> GetById(int id);
+        Task<TEntity?> GetById(Guid id);
         Task Create(TEntity entity);
         Task Update(TEntity entity);
         Task Delete(TEntity entity);
