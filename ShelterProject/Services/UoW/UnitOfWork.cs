@@ -12,6 +12,13 @@ namespace ShelterProject.Services
         ApplicationUserRepo IUnitOfWork.ApplicationUserRepository => throw new NotImplementedException();
         ShelterRepo IUnitOfWork.ShelterRepository => throw new NotImplementedException();
 
+
+        AnimalsService IUnitOfWork.AnimalsService => throw new NotImplementedException();
+        ShelterService IUnitOfWork.ShelterService => throw new NotImplementedException();
+        ApplicationUserService IUnitOfWork.ApplicationUserService => throw new NotImplementedException();
+
+
+
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;

@@ -63,5 +63,16 @@ namespace ShelterProject.Repositories
             .ToListAsync();
             return result;
         }
+
+        public async Task<bool> DoesAnimalHaveOwner(Guid animalId, string ownerId)
+        {
+            // Check if there is any ownership entry for the given animalId and ownerId
+            bool hasOwner = await _context.Animals
+                .Where(a => a.Id == animalId)
+                .SelectMany(a => a.Shelter.Owners)
+                .AnyAsync(o => o.ApplicationUserId == ownerId);
+
+            return hasOwner;
+        }
     }
 }

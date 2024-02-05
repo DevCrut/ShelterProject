@@ -1,4 +1,5 @@
-﻿using ShelterProject.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ShelterProject.Models;
 using ShelterProject.Services.Generics;
 using ShelterProject.Services.Interfaces;
 
