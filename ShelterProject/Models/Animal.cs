@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using ShelterProject.Models.Generics;
 
 namespace ShelterProject.Models
 {
-    public class Animal
+    public class Animal : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Breed {  get; set; }

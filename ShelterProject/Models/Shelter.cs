@@ -1,8 +1,9 @@
-﻿namespace ShelterProject.Models
+﻿using ShelterProject.Models.Generics;
+
+namespace ShelterProject.Models
 {
-    public class Shelter
+    public class Shelter : BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Animal> Animals { get; set; }
 
